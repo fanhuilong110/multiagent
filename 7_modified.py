@@ -494,8 +494,8 @@ class MultiAgent:
 
 def train_model(divide_data, model_save_path):
     print("train_model_start")
-    EPISODES = 2
-    batch_size = 2
+    EPISODES = 10000
+    batch_size = 32
     visualize_interval = 2
     # 初始化历史记录
     crane_states_history = []
@@ -556,7 +556,7 @@ def train_model(divide_data, model_save_path):
                 break
 
         # Save model weights for each agent every 20 episodes
-        if e % 2 == 0:
+        if e % 32 == 0:
             for agent_idx, agent in enumerate(agents):
                 agent.save(f"{model_save_path}model_weights_{agent_idx}.pt")
 
@@ -617,7 +617,7 @@ def test_model(divide_data,model_save_path):
         crane_states_history.append(next_crane_states.copy())
         casting_states_history.append(casting_states.copy())
 
-        if step_count == 100:
+        if step_count == 5000:
             break
         if done:
             print("Test episode finished.")
