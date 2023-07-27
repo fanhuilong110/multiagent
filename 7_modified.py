@@ -22,7 +22,7 @@ TASK_COMPLETION_REWARD = 100
 
 def get_load_data():
     # 读取 HDF5 文件
-    with pd.HDFStore('D:\paper\code\muldp\second\data\data.h5', mode='r') as store:
+    with pd.HDFStore('./data/data.h5', mode='r') as store:
         # 读取 location_df
         location_df = store.get('df/location_df')
 
